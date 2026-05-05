@@ -13,16 +13,16 @@ import java.time.LocalDate;
 public class Vehicle {
     /*
     Fields:
-    - licensePlate : String
-    - carOwner : String
-    - phoneNumber: String
-    - carBrand : String
-    - value : Int
-    - registrationDate: Date
-    - placeOfRegustration: String
-    - numberSeats: int
+•	License plate: A unique 9-character string.  
+•	Car owner: Name of the person who owns the vehicle. 
+•	Phone Number: Owner's phone number. 
+•	Car brand: Brand of the vehicle. 
+•	The value of the vehicle: The value of the vehicle that the owner has paid for 
+•	Registration Date: The date on which the vehicle was registered for traffic 
+•	Place of registration: Is the name of a district in Ho Chi Minh City. • 	Number of seats: The number of seats  Validation Rules: 
+
     */
-    private String licensePlate;
+    private String licensePlate; // the key of HashMap
     private String carOwner;
     private String phoneNumber;
     private  String carBrand;
@@ -118,9 +118,23 @@ public class Vehicle {
     // Method overide: toString()
     @Override
     public String toString() {
-        return "Vehicle{" + "licensePlate=" + licensePlate + ", carOwner=" + carOwner + ", phoneNumber=" + phoneNumber + ", carBrand=" + carBrand + ", value=" + value + ", registrationDate=" + registrationDate + ", placeOfRegustration=" + placeOfRegustration + ", numberSeats=" + numberSeats + '}';
+        return licensePlate + "," + carOwner + "," + phoneNumber + "," + carBrand + "," + value + "," + registrationDate + "," + placeOfRegustration + "," + numberSeats + '}';
     }
-    
+
+    // Use for ShowAll()
+      public String dataToTable() {
+        return String.format(
+        "| %-10s | %-20s | %-12s | %-10s | %-8d | %-12s | %-15s | %-5d |",
+        licensePlate,
+        carOwner,
+        phoneNumber,
+        carBrand,
+        value,
+        registrationDate.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+        placeOfRegustration,
+        numberSeats
+    );
+    }
     
     
 }

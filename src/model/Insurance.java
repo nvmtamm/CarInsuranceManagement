@@ -20,7 +20,7 @@ public class Insurance {
     •	Insurance fees: Amount payable for the respective insurance statement. 
     •	Insurance owner: Name of the beneficiary Validation Rules: 
     */
-    private String insuranceId;
+    private String insuranceId; // the Key of HashMap
     private String owner;
     private String lisencePlate;
     private LocalDate establishedDate;
@@ -91,6 +91,24 @@ public class Insurance {
 
     public void setFees(String fees) {
         this.fees = fees;
+    }
+     // overide methos: toStrign()
+
+    @Override
+    public String toString() {
+        return insuranceId + "," + owner + "," + lisencePlate + "," + establishedDate + "," + period + "," + fees ;
+    }
+
+    public String dataToTable() {
+         return String.format(
+        "| %-6s | %-20s | %-10s | %-12s | %-6d | %-10s |",
+        insuranceId,
+        owner,
+        lisencePlate,
+        establishedDate.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy")),
+        period,
+        fees
+    );
     }
     
 }
