@@ -31,4 +31,6 @@ public interface Workable<T> {
   T dataToObject(String data);
   
   boolean checkExist(String id);
+
+  boolean checkExist(T x);
 }
