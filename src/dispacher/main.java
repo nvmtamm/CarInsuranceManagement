@@ -73,23 +73,26 @@ public class main {
                 
                 case 3:
                     System.out.println("You chosen:3.Update car information");
-                    String licensePlate = input.inputAndLoop("Enter the license plate number of the car they want to update: ", tools.Acceptable.LICENSE_PLATE);
+                    String licensePlate = input.inputAndLoop(" Enter the license plate to update: ", tools.Acceptable.LICENSE_PLATE);
                     Vehicle v = vm.search(licensePlate);
                     if (v != null) {
-                        if (im.checkInsurance(licensePlate) ) {
+                        if (im.checkInsurance(licensePlate)) {
                             System.out.println("This car is already insurance.Return the menu.");
                         }else{
-                            v.toString();
-                            if (input.getYesNo("Do you wnat to update this car?: ")) {
+                            System.out.println(v.dataToTable());
+                            if (input.getYesNo("   Do you wnat to update this car?:   ")) {
                                 Vehicle newV = input.getCarInfo();
                                 if (newV != null) {
-                                    vm.update(v, newV);
+                                    vm.update(licensePlate, newV);
                                     System.out.println("Update car information successfully!!!");
                                 }
                             }else{
                                 System.out.println("Return the menu.");
                             }
                         }
+                    }else{
+                        System.out.println("This car dose not exist!!!");   
+                    }
                     break;
                 
                 case 4:

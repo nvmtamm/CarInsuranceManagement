@@ -123,9 +123,15 @@ private static final String TABLE_FOOTER =
     
     
    
-        @Override
+    @Override
     public void delete(Vehicle x) {
         this.remove(x.getLicensePlate());
+    }
+
+    public void update(String licensePlate, Vehicle newVehicle) {
+        this.remove(licensePlate);
+        this.put(newVehicle.getLicensePlate(), newVehicle);
+        this.setIsSaved(false);
     }
 
     @Override
